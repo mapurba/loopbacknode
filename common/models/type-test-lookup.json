@@ -1,0 +1,32 @@
+{
+  "name": "TypeTestLookup",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "admin": {
+    "defaultProperty": "description"
+  },
+  "properties": {
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "sequence": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "typeTests": {
+      "type": "hasMany",
+      "model": "orders",
+      "foreignKey": "typeTestId",
+      "through": "TestThrough"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

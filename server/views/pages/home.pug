@@ -1,0 +1,69 @@
+extends ../wrapper
+
+block seo
+	title.
+		Home
+
+block content
+	.row
+		.col-xs-12
+
+			if alert
+				.alert.alert-info
+					= alert
+
+			if user
+				p.
+					Logged in as #{user.email}
+
+				if !SKIP_PASSPORT
+					- var fb,tw
+
+					if user.identities()
+						for identity in user.identities()
+							if identity.provider === 'google'
+								- fb= identity
+							
+					if fb
+						p Linked w/facebook account
+					else
+						p
+							a(href="/auth/google" data-no-hijax="true") Link w/ Facebook Account
+				p
+					button.btn.btn-default(data-jsclass="logoutController").
+							Log Out
+					a(href="/UserDetail" data-no-hijax="true") Link w/ get User Detail
+
+
+			else
+				h3 Login or &nbsp;
+					a(href="/register") Create Account
+
+				form.form.form-inline(data-jsclass="loginController")
+					.form-group
+						input.form-control(type="text" name="email" placeholder="Email address")
+					.form-group
+						input.form-control(type="password" name="password" placeholder="Password")
+					.form-group
+						input.form-control.btn.btn-primary(type="submit")
+
+				if !SKIP_PASSPORT
+					h3 Use Passport
+					.btn-group
+						a.btn.btn-primary(href= "/auth/google" data-no-hijax="true") Facebook
+						a.btn.btn-primary(href= "/auth/twitter" data-no-hijax="true") Twitter
+
+	.row(style="padding-top:50px;")
+		.col-xs-12
+			if !SKIP_UPLOAD && user
+				p
+					a.btn.btn-primary(href="/upload") Upload a file
+
+			if !SKIP_OG
+				p
+					a.btn.btn-primary(href="/ogtags") OG Tag Example
+
+
+	.row(style="padding-top:50px;")
+		.col-xs-12
+			p= 'ip: ' + ip

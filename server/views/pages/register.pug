@@ -1,0 +1,16 @@
+extends ../wrapper
+
+block seo
+	title.
+		Register
+
+block content
+	h3.
+		Register
+	form.form.form-inline(action="/register" method="POST")
+		.form-group
+			input.form-control(type="text" name="email" placeholder="Email address")
+		.form-group
+			input.form-control(type="password" name="password" placeholder="Password")
+		.form-group
+			input.form-control.btn.btn-primary(type="submit")

@@ -1,0 +1,141 @@
+{
+  "name": "orders",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "admin": {
+    "defaultProperty": "aString",
+    "listProperties": [
+      "aString"
+    ]
+  },
+  "properties": {
+    "aString": {
+      "type": "string",
+      "required": true,
+      "admin": {
+        "validate": {
+          "min-length": 5,
+          "max-length": 30
+        }
+      }
+    },
+    "someText": {
+      "type": "text",
+      "admin": {
+        "inputType": "textarea"
+      }
+    },
+    "anEmail": {
+      "type": "string",
+      "admin": {
+        "validate": {
+          "email": true
+        }
+      }
+    },
+    "aUrl": {
+      "type": "string",
+      "admin": {
+        "validate": {
+          "url": true
+        }
+      }
+    },
+    "aNumber": {
+      "type": "number",
+      "admin": {
+        "validate": {
+          "integer": true,
+          "min": 100,
+          "max": 200
+        }
+      }
+    },
+    "aBoolean": {
+      "type": "boolean"
+    },
+    "anObject": {
+      "type": "object"
+    },
+    "anArray": {
+      "type": [
+        "string"
+      ]
+    },
+    "aDate": {
+      "type": "date"
+    },
+    "aDateTime": {
+      "type": "date",
+      "admin": {
+        "inputType": "datetime"
+      }
+    },
+    "options": {
+      "type": "string",
+      "admin": {
+        "options": [
+          "one",
+          "two",
+          "three"
+        ]
+      }
+    },
+    "optionsMultiple": {
+      "type": [
+        "string"
+      ],
+      "admin": {
+        "options": [
+          "one",
+          "two",
+          "three"
+        ],
+        "multiple": true
+      }
+    },
+    "aCreditCard": {
+      "type": "string",
+      "admin": {
+        "validate": {
+          "cc-number": true
+        }
+      }
+    },
+    "aCreditCardExp": {
+      "type": "string",
+      "admin": {
+        "validate": {
+          "cc-exp": true
+        }
+      }
+    },
+    "aCreditCardCvc": {
+      "type": "string",
+      "admin": {
+        "validate": {
+          "cc-cvc": true
+        }
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "owner": {
+      "type": "belongsTo",
+      "model": "MyUser",
+      "foreignKey": "ownerId"
+    },
+    "typeTestLookups": {
+      "type": "hasMany",
+      "model": "TypeTestLookup",
+      "foreignKey": "typeTestId",
+      "through": "TestThrough"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

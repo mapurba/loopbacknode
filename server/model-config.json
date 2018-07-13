@@ -1,0 +1,74 @@
+ {
+    "_meta": {
+      "sources": [
+        "loopback/common/models",
+        "loopback/server/models",
+        "digitopia-admin/common/models",
+        "../common/models",
+        "./models"
+      ],
+      "mixins": [
+        "loopback/common/mixins",
+        "loopback/server/mixins",
+        "../node_modules/loopback-ds-timestamp-mixin",
+        "../common/mixins",
+        "./mixins"
+      ]
+    },
+    "Upload": {
+      "dataSource": "mongodb",
+      "public": true
+    },
+    "User": {
+      "dataSource": "mongodb",
+      "public": false
+    },
+    "AccessToken": {
+      "dataSource": "mongodb",
+      "public": true
+    },
+    "ACL": {
+      "dataSource": "mongodb",
+      "public": true
+    },
+    "RoleMapping": {
+      "dataSource": "mongodb",
+      "public": true
+    },
+    "Role": {
+      "dataSource": "mongodb",
+      "public": true
+    },
+    "MyUser": {
+      "dataSource": "mongodb",
+      "public": true
+    },
+    "UserIdentity": {
+      "dataSource": "mongodb",
+      "public": true
+    },
+    "ImageSet": {
+      "dataSource": "mongodb",
+      "public": true
+    },
+    "orders": {
+      "dataSource": "mongodb",
+      "public": true
+    },
+    "TypeTestLookup": {
+      "dataSource": "mongodb",
+      "public": true
+    },
+    "TestThrough": {
+      "dataSource": "mongodb",
+      "public": true
+    },
+    "I18n": {
+      "dataSource": "mongodb",
+      "public": true
+    },
+    "OgTag": {
+      "dataSource": "mongodb",
+      "public": true
+    }
+  }

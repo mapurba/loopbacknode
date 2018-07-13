@@ -1,0 +1,64 @@
+{
+  "name": "MyUser",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "admin": {
+    "defaultProperty": "email",
+    "listProperties": [
+      "email",
+      "username"
+    ],
+    "editProperties": [
+      "email",
+      "username",
+      "password"
+    ],
+    "includeRelations": [
+      "uploads",
+      "orders",
+      "identities"
+    ],
+    "helpers": [{
+      "type": "upload",
+      "name": "Upload Photo",
+      "property": "photo",
+      "endpoint": "/api/MyUsers/:id/upload/photo"
+    }, {
+      "type": "upload",
+      "name": "Upload Background",
+      "property": "background",
+      "endpoint": "/api/MyUsers/:id/upload/background"
+    }]
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "identities": {
+      "type": "hasMany",
+      "model": "UserIdentity",
+      "foreignKey": "userId"
+    },
+    "orders": {
+      "type": "hasOne",
+      "model": "orders",
+      "foreignKey": "ownerId"
+    }
+  },
+  "acls": [{
+    "accessType": "EXECUTE",
+    "principalType": "ROLE",
+    "principalId": "$owner",
+    "permission": "ALLOW",
+    "property": "upload"
+  }, {
+    "accessType": "*",
+    "principalType": "ROLE",
+    "principalId": "admin",
+    "permission": "ALLOW",
+    "property": "*"
+  }],
+  "methods": {}
+}

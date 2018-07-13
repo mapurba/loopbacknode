@@ -1,0 +1,41 @@
+@import 'nib'
+
+.is-logged-in
+	.hidden-logged-in
+		display:none!important
+
+.is-logged-out
+	.hidden-logged-out
+		display:none!important
+
+#scope-pages-upload
+
+	.profile-photo-viewport
+		position:relative
+		height:300px
+		img
+			transition: all 0.5s ease
+		.dropzone
+			position:absolute
+			top:0px!important
+			width:100%
+			height:300px
+			opacity: 0
+			transition: all 0.5s ease;
+			paddding-top:40%
+		.dropzone:hover
+			opacity: 0.8
+		.loading
+			opacity: 1
+
+#scope-pages-og
+	#preview-json-here
+		display:none
+
+	#preview-og
+		margin-top:50px
+
+#ajax-status
+	position:fixed
+	right:0px
+	bottom:0px
